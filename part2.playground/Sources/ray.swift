@@ -28,7 +28,7 @@ struct camera {
 
 func color(r: ray, _ world: hitable) -> float3 {
     var rec = hit_record()
-    if world.hit(r, 0.0, Float.infinity, &rec) {
+    if world.hit(r, 0.01, Float.infinity, &rec) {
         let target = rec.p + rec.normal + random_in_unit_sphere()
         return 0.5 * color(ray(origin: rec.p, direction: target - rec.p), world)
     } else {
